@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('foto')->nullable();
-            $table->text('descripcion')->nullable();
+            $table->text('descripcion');
             $table->unsignedBigInteger('administrador_id');
             $table->timestamps();
             
