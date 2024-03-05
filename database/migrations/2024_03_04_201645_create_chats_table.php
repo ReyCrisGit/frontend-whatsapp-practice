@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('contacto_id');
             $table->text('mensaje');
             $table->timestamp('fecha');
+            $table->timestamps();
             
             $table->foreign('cuenta_id')->references('id')->on('cuentas')->onDelete('cascade');
             $table->foreign('contacto_id')->references('id')->on('contactos')->onDelete('cascade');
