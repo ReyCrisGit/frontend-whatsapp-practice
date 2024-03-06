@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contacto;
+use App\Models\Chat;
 
 class ContactoController extends Controller
 {
@@ -11,7 +13,8 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        //
+        $contactos = Contacto::all();
+        return view ('contactos.index', ['contactos' => $contactos]);
     }
 
     /**
@@ -19,7 +22,9 @@ class ContactoController extends Controller
      */
     public function create()
     {
-        //
+        $chats = Chat::all();
+        $contactos = Contacto::all();
+        return view('contactos.create', ['chats' => $chats]);
     }
 
     /**
@@ -27,7 +32,14 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contacto = new Contacto();
+        $contacto->nombre = $request->nombre;
+        $contacto->apellido = $request->apellido;
+        $contacto->numero_celular = $request->numero_celular;
+        $contacto->pais = $request->pais;
+        $contacto->cuenta_id = $request->cuenta_id;
+        $contacto->save();
+        return redirect()->action([ContactoController::class, 'index']);
     }
 
     /**
@@ -35,7 +47,8 @@ class ContactoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $contacto = Contacto::find($id);
+        return view('contactos.view', ['contacto' => $contacto]);
     }
 
     /**
@@ -43,7 +56,8 @@ class ContactoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $contacto = Contacto::find($id);
+        return view('contactos.create', ['contacto' => $contacto]);
     }
 
     /**
@@ -51,7 +65,15 @@ class ContactoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $contacto = Contacto::find($id);
+        $contacto->nombre = $request->nombre;
+        $contacto->apellido = $request->apellido;
+        $contacto->numero_celular = $request->numero_celular;
+        $contacto->pais = $request->pais;
+        $contacto->cuenta_id = $request->cuenta_id;
+        $contacto->save();
+        return redirect()->action([ContactoController::class, 'index']);
+
     }
 
     /**
@@ -59,6 +81,8 @@ class ContactoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $contacto = Contacto::find($id);
+        $contacto->delete();
+        return redirect()->action([ContactoController::class, 'index']);
     }
 }

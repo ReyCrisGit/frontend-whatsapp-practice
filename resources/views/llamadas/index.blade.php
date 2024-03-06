@@ -8,29 +8,25 @@
 </head>
 <body>
     <header>
-        <h2>Chats</h2>
+        <h2>LLamadas</h2>
     </header>
     <main>
         <div class="btn_container">
-            <a href="chats/create">Nuevo Chat</a>
+            <a href="llamadas/create">Nueva Llamada</a>
         </div>
         <table>
             <tr>
                 <th>Cuenta</th>
                 <th>Contacto</th>
-                {{-- <th>Mensaje</th>
-                <th>Fecha</th> --}}
                 <th>Acción</th>
             </tr>
-            @foreach ($chats as $chat)
+            @foreach ($llamadas as $llamada)
                 <tr>
-                    <td>{{$chat->cuenta->nombre}}</td>
-                    <td>{{$chat->contacto->nombre}}</td>
-                    {{-- <td>{{$chat->mensaje}}</td>
-                    <td>{{$chat->fecha}}</td> --}}
+                    <td>{{$llamada->cuenta->nombre}}</td>
+                    <td>{{$llamada->contacto->nombre}}</td>
                     <td>
-                        <a href="chats/{{$chat->id}}/view">Ver</a>
-                        <a href="chats/{{$chat->id}}/edit">Editar</a>
+                        <a href="llamadas/{{$llamada->id}}/view">Ver</a>
+                        <a href="llamadas/{{$llamada->id}}">Editar</a>
                     </td>
                 </tr>
             @endforeach

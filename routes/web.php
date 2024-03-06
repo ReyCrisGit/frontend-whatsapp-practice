@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\LlamadaController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,3 +37,19 @@ Route::get('/chats/{id}/edit', [ChatController::class, 'edit'])->name('chats.edi
 Route::put('/chats/{id}/update', [ChatController::class, 'update'])->name('chats.update');
 Route::get('/chats/{id}/view', [ChatController::class, 'show'])->name('chats.view');
 Route::delete('/chats/{id}/delete', [ChatController::class, 'destroy'])->name('chats.destroy');
+
+Route::get('/contactos', [ContactoController::class, 'index'])->name('contacto.index');
+Route::get('/contactos/create', [ContactoController::class, 'create'])->name('contacto.create');
+Route::post('/contactos/store', [ContactoController::class, 'store'])->name('contactos.store');
+Route::get('/contactos/{id}/edit', [ContactoController::class, 'edit'])->name('contactos.edit');
+Route::put('/contactos/{id}/update', [ContactoController::class, 'update'])->name('contactos.update');
+Route::get('/contactos/{id}/view', [ContactoController::class, 'show'])->name('contactos.view');
+Route::delete('/contactos/{id}/delete', [ContactoController::class, 'destroy'])->name('contactos.destroy');
+
+Route::get('/llamadas', [LlamadaController::class, 'index'])->name('llamada.index');
+Route::get('/llamadas/create', [LlamadaController::class, 'create'])->name('llamada.create');
+Route::post('/llamadas/store', [LlamadaController::class, 'store'])->name('llamadas.store');
+Route::get('/llamadas/{id}/edit', [LlamadaController::class, 'edit'])->name('llamadas.edit');
+Route::put('/llamadas/{id}/update', [LlamadaController::class, 'update'])->name('llamadas.update');
+Route::get('/llamadas/{id}/view', [LlamadaController::class, 'show'])->name('llamadas.view');
+Route::delete('/llamadas/{id}/delete', [LlamadaController::class, 'destroy'])->name('llamadas.destroy');

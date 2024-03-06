@@ -18,7 +18,7 @@
         <form action="{{isset($chat) ? route('chats.update', $chat->id) : route('chats.store')}}" method="post">
         @csrf
         @if (isset($chat))
-        {{@method_field('PUT')}}
+        {{method_field('PUT')}}
         @endif
         <label for="">Cuenta
             <select name="cuenta_id" id="">
@@ -30,6 +30,24 @@
                     @endif
                 @endforeach
             </select>
+        </label>
+        <label for="">Contacto
+            <select name="contacto_id" id="">
+                @foreach ($contactos as $contacto)
+                    @if (isset($chat) && $contacto->id === $chat->contacto_id)
+                        <option selected="" value="{{$contacto->id}}">{{$contacto->nombre}}</option>
+                    @else
+                        <option value="{{$contacto->id}}">{{$contacto->nombre}}</option>
+                    @endif
+                @endforeach
+            </select>
+        </label>
+        <label for="">Mensaje
+            {{-- <input type="text" name="mensaje" id="" placeholder="Escribe un mensaje" value="{{isset($chat) ? $chat->mensaje : ''}}"> --}}
+            <textarea name="mensaje" id="" cols="30" rows="10" placeholder="Escribe un mensaje" value="{{isset($chat) ? $chat->mensaje : ''}}"></textarea>
+        </label>
+        <label for="">Fecha y hora
+            <input type="datetime-local" name="fecha" id="" value="{{isset($chat) ? $chat->fecha : ''}}">
         </label>
         <input type="submit" value="{{isset($chat) ? 'Actualizar' : 'Enviar'}}">
         </form>

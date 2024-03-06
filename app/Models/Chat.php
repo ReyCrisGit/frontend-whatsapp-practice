@@ -34,6 +34,11 @@ class Chat extends Model
         return $this->belongsTo(Cuenta::class, 'cuenta_id');
     }
 
+    public function contacto()
+    {
+        return $this->belongsTo(Contacto::class, 'contacto_id');
+    }
+
     protected $fillable = [
         'mensaje',
         'fecha',

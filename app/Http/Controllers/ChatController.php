@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Chat;
 use App\Models\Cuenta;
+use App\Models\Contacto;
 
 class ChatController extends Controller
 {
@@ -26,8 +27,9 @@ class ChatController extends Controller
     {
         $chats = Chat::all();
         $cuentas = Cuenta::all();
-        return view('chats.create', ['cuentas' => $cuentas]);
-        //return view('chats.create', compact('cuentas')); // Pasar las cuentas a la vista
+        $contactos = Contacto::all();
+        //return view('chats.create', ['cuentas' => $cuentas]);
+        return view('chats.create', compact('cuentas', 'contactos')); // Pasar las cuentas a la vista
     }
 
     /**

@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th>Contacto</th>
-                <td>{{$chat->contacto_id}}</td>
+                <td>{{$chat->contacto->nombre}}</td>
             </tr>
             <tr>
                 <th>Mensaje</th>

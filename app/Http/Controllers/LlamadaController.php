@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Llamada;
+use App\Models\Cuenta;
+use App\Models\Contacto;
 
 class LlamadaController extends Controller
 {
@@ -11,7 +14,8 @@ class LlamadaController extends Controller
      */
     public function index()
     {
-        //
+        $llamadas = Llamada::with('llamada')->get();
+        return view('llamadas.index', compact('chats'));
     }
 
     /**
@@ -19,7 +23,9 @@ class LlamadaController extends Controller
      */
     public function create()
     {
-        //
+        $cuentas = Cuenta::all();
+        $contactos = Contacto::all();
+        return view('llamadas.create', compact('cuentas', 'contactos'));
     }
 
     /**
@@ -27,7 +33,12 @@ class LlamadaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $llamada = new Llamada();
+        $llamada->cuenta_id = $request->cuenta_id;
+        $llamada->contacto_id = $request->contacto_id;
+        $llamada->fecha = $request->fecha;
+        $llamada->save();
+        return redirect()->action([LlamadaController::class, 'index']);
     }
 
     /**
@@ -35,7 +46,8 @@ class LlamadaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $llamada = Llamada::find($id);
+        return view('llamadas.view', ['llamada' => $llamada]);
     }
 
     /**
@@ -43,7 +55,8 @@ class LlamadaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $llamada = Llamada::find($id);
+        return view('llamadas.create', ['llamada' => $llamada]);
     }
 
     /**
@@ -51,7 +64,12 @@ class LlamadaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $llamada = Llamada::find($id);
+        $llamada->cuenta_id = $request->cuenta_id;
+        $llamada->contacto_id = $request->contacto_id;
+        $llamada->fecha = $request->fecha;
+        $llamada->save();
+        return redirect()->action([LlamadaController::class, 'index']);
     }
 
     /**
@@ -59,6 +77,8 @@ class LlamadaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $llamada = Llamada::find($id);
+        $llamada->delete();
+        return redirect()->action([LlamadaController::class, 'index']);
     }
 }
