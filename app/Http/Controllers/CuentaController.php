@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cuenta;
+use App\Models\Chat;
 
 class CuentaController extends Controller
 {
@@ -21,7 +22,10 @@ class CuentaController extends Controller
      */
     public function create()
     {
-        return view('cuentas.create');
+        $chats = Chat::all();
+        $cuentas = Cuenta::all();
+        return view('cuentas.create', ['chats' => $chats]);
+        //return view('chats.create', ['cuentas' => $cuentas]);
     }
 
     /**
@@ -46,7 +50,7 @@ class CuentaController extends Controller
     public function show(string $id)
     {
         $cuenta = Cuenta::find($id);
-        return view('cuentas', ['cuenta' => $cuenta]);
+        return view('cuentas.view', ['cuenta' => $cuenta]);
     }
 
     /**
@@ -79,6 +83,8 @@ class CuentaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cuenta = Cuenta::find($id);
+        $cuenta->delete();
+        return redirect()->action([CuentaController::class, 'index']);
     }
 }
