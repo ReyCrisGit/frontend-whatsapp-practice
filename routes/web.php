@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CuentaController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cuentas', [CuentaController::class, 'index'])->name('cuenta.index');
+Route::get('/cuentas/create', [CuentaController::class, 'create'])->name('cuenta.create');
+Route::post('/cuentas/store', [CuentaController::class, 'store'])->name('cuentas.store');
+Route::get('/cuentas/{id}/edit', [CuentaController::class, 'edit'])->name('cuentas.edit');
+Route::put('/cuentas/{id}/update', [CuentaController::class, 'update'])->name('cuentas.update');
