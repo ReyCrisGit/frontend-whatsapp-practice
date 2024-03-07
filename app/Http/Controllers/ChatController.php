@@ -61,7 +61,10 @@ class ChatController extends Controller
     public function edit(string $id)
     {
         $chat = Chat::find($id);
-        return view('chats.create', ['chat' => $chat]);
+        $cuentas = Cuenta::all();
+        $contactos = Contacto::all();
+        //return view('chats.create', ['chat' => $chat]);
+        return view('chats.create', compact('chat', 'cuentas', 'contactos'));
     }
 
     /**

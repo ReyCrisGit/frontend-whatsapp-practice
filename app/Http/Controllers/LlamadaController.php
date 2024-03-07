@@ -14,8 +14,8 @@ class LlamadaController extends Controller
      */
     public function index()
     {
-        $llamadas = Llamada::with('llamada')->get();
-        return view('llamadas.index', compact('chats'));
+        $llamadas = Llamada::with('cuenta')->get();
+        return view('llamadas.index', compact('llamadas'));
     }
 
     /**

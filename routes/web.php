@@ -4,6 +4,7 @@ use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\LlamadaController;
+use App\Http\Controllers\GrupoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -53,3 +54,11 @@ Route::get('/llamadas/{id}/edit', [LlamadaController::class, 'edit'])->name('lla
 Route::put('/llamadas/{id}/update', [LlamadaController::class, 'update'])->name('llamadas.update');
 Route::get('/llamadas/{id}/view', [LlamadaController::class, 'show'])->name('llamadas.view');
 Route::delete('/llamadas/{id}/delete', [LlamadaController::class, 'destroy'])->name('llamadas.destroy');
+
+Route::get('/grupos', [GrupoController::class, 'index'])->name('grupo.index');
+Route::get('/grupos/create', [GrupoController::class, 'create'])->name('grupo.create');
+Route::post('/grupos/store', [GrupoController::class, 'store'])->name('grupos.store');
+Route::get('/grupos/{id}/edit', [GrupoController::class, 'edit'])->name('grupos.edit');
+Route::put('/grupos/{id}/update', [GrupoController::class, 'update'])->name('grupos.update');
+Route::get('/grupos/{id}/view', [GrupoController::class, 'show'])->name('grupos.view');
+Route::delete('/grupos/{id}/delete', [GrupoController::class, 'destroy'])->name('grupos.destroy');

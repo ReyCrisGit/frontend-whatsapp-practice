@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Grupo;
+use App\Models\Cuenta;
 
 class GrupoController extends Controller
 {
@@ -11,7 +13,8 @@ class GrupoController extends Controller
      */
     public function index()
     {
-        //
+        $grupos = Grupo::with('cuenta')->get();
+        return view('grupos.index', compact('grupos'));
     }
 
     /**
@@ -19,7 +22,8 @@ class GrupoController extends Controller
      */
     public function create()
     {
-        //
+        $cuentas = Cuenta::all();
+        return view('grupos.create', compact('cuentas'));
     }
 
     /**
@@ -27,7 +31,12 @@ class GrupoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $grupo = new Grupo();
+        $grupo->nombre = $request->nombre;
+        $grupo->descripcion = $request->descripcion;
+        $grupo->administrador_id = $request->administrador_id;
+        $grupo->save();
+        return redirect()->action([GrupoController::class, 'index']);
     }
 
     /**
@@ -35,7 +44,9 @@ class GrupoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //$grupo = Grupo::find($id);
+        $grupo = Grupo::with('contactos')->find($id);
+        return view('grupos.view', ['grupo' => $grupo]);
     }
 
     /**
@@ -43,7 +54,10 @@ class GrupoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $grupo = Grupo::find($id);
+        $cuentas = Cuenta::all();
+        //return view('grupos.create', ['grupo' => $grupo]);
+        return view('grupos.create', compact('grupo', 'cuentas'));
     }
 
     /**
@@ -51,7 +65,12 @@ class GrupoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $grupo = Grupo::find($id);
+        $grupo->nombre = $request->nombre;
+        $grupo->descripcion = $request->descripcion;
+        $grupo->administrador_id = $request->administrador_id;
+        $grupo->save();
+        return redirect()->action([GrupoController::class, 'index']);
     }
 
     /**
@@ -59,6 +78,8 @@ class GrupoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $grupo = Grupo::find($id);
+        $grupo->delete();
+        return redirect()->action([GrupoController::class, 'index']);
     }
 }

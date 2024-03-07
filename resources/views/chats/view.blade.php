@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h2>Chat</h2>
+        <h2>Chats</h2>
     </header>
     <main>
         <table>

@@ -8,20 +8,23 @@
 </head>
 <body>
     <header>
-        <h2>Contactos</h2>
+        <h2>Grupos</h2>
     </header>
     <main>
         <div class="btn_container">
-            <a href="contacto/create">Nuevo Contacto</a>
+            <a href="grupos/create">Nuevo Grupo</a>
         </div>
         <table>
-            @foreach ($contactos as $contacto)
+            <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+            @foreach ($grupos as $grupo)
                 <tr>
-                    <td>{{$contacto->nombre}}</td>
-                    <td>{{$contacto->apellido}}</td>
+                    <td>{{$grupo->nombre}}</td>
                     <td>
-                        <a href="contactos/{{$contacto->id}}/view">Ver</a>
-                        <a href="contactos/{{$contacto->id}}/edit">Editar</a>
+                        <a href="grupos/{{$grupo->id}}/view">Ver</a>
+                        <a href="grupos/{{$grupo->id}}/edit">Editar</a>
                     </td>
                 </tr>
             @endforeach

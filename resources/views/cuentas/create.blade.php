@@ -17,7 +17,7 @@
         </header>
         <form action="{{isset($cuenta) ? route('cuentas.update', $cuenta->id) : route('cuentas.store')}} " method="post">
             @csrf
-            @if(@isset($cuenta))
+            @if(isset($cuenta))
             {{method_field('PUT')}}
             @endif
             <label for="">Nombre

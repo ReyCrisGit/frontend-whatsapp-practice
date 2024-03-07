@@ -43,7 +43,7 @@
                 </select>
             </label>
             <label for="">Fecha y hora
-                <input type="datetime-local" name="fecha" id="" value="{{($llamada) ? $llamada->fecha : ''}}">
+                <input type="datetime-local" name="fecha" id="" value="{{isset($llamada) ? $llamada->fecha : ''}}">
             </label>
             <input type="submit" value="{{isset($llamada) ? 'Actulizar' : 'Llamar'}}">
         </form>

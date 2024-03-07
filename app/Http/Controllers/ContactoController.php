@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contacto;
 use App\Models\Chat;
+use App\Models\Cuenta;
 
 class ContactoController extends Controller
 {
@@ -13,8 +14,10 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        $contactos = Contacto::all();
-        return view ('contactos.index', ['contactos' => $contactos]);
+        //$contactos = Contacto::all();
+        $contactos = Contacto::with('cuenta')->get();
+        //return view ('contactos.index', ['contactos' => $contactos]);
+        return view('contactos.index', compact('contactos'));
     }
 
     /**
@@ -24,7 +27,9 @@ class ContactoController extends Controller
     {
         $chats = Chat::all();
         $contactos = Contacto::all();
-        return view('contactos.create', ['chats' => $chats]);
+        $cuentas = Cuenta::all();
+        //return view('contactos.create', ['chats' => $chats]);
+        return view('contactos.create', compact( 'cuentas'));
     }
 
     /**
@@ -47,7 +52,8 @@ class ContactoController extends Controller
      */
     public function show(string $id)
     {
-        $contacto = Contacto::find($id);
+        //$contacto = Contacto::find($id);
+        $contacto = Contacto::with('cuenta')->find($id);
         return view('contactos.view', ['contacto' => $contacto]);
     }
 
@@ -57,7 +63,9 @@ class ContactoController extends Controller
     public function edit(string $id)
     {
         $contacto = Contacto::find($id);
-        return view('contactos.create', ['contacto' => $contacto]);
+        $cuentas = Cuenta::all();
+        //return view('contactos.create', ['contacto' => $contacto]);
+        return view('contactos.create', compact('contacto', 'cuentas'));
     }
 
     /**
