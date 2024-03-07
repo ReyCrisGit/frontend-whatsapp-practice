@@ -10,10 +10,18 @@
     <header>
         <h2>Contactos</h2>
     </header>
-    <main>
+    <div class="nav_container">
         <div class="btn_container">
-            <a href="contacto/create">Nuevo Contacto</a>
+            <a href="contactos/create">Nuevo Contacto</a>
         </div>
+        <nav>
+            <form action="{{ route('contactos.search') }}" method="GET">
+                <input class="buscar " type="text" name="search" placeholder="Buscar Contacto">
+                <button class="buscar btn_buscar" type="submit">Buscar</button>
+            </form>
+        </nav>
+    </div>    
+    <main>
         <table>
             @foreach ($contactos as $contacto)
                 <tr>
@@ -21,7 +29,7 @@
                     <td>{{$contacto->apellido}}</td>
                     <td>
                         <a href="contactos/{{$contacto->id}}/view">Ver</a>
-                        <a href="contactos/{{$contacto->id}}/edit">Editar</a>
+                        {{-- <a href="contactos/{{$contacto->id}}/edit">Editar</a> --}}
                     </td>
                 </tr>
             @endforeach

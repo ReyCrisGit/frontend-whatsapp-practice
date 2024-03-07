@@ -93,4 +93,15 @@ class ContactoController extends Controller
         $contacto->delete();
         return redirect()->action([ContactoController::class, 'index']);
     }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $contactos = Contacto::where('nombre', 'like', '%'.$searchTerm.'%')
+                            ->orWhere('apellido', 'like', '%'.$searchTerm.'%')
+                            ->get();
+
+        return view('contactos.index', compact('contactos'));
+    }
 }

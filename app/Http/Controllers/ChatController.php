@@ -90,4 +90,13 @@ class ChatController extends Controller
         $chat->delete();
         return redirect()->action([ChatController::class, 'index']);
     }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $chats = Chat::where('mensaje', 'like', '%'.$searchTerm.'%')->get();
+
+        return view('chats.index', compact('chats'));
+    }
 }

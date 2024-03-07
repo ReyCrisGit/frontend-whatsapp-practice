@@ -15,10 +15,10 @@
         @endif
     </header>
     <main>
-        <form action="{{isset($contacto) ? route('contactos.update', $contacto->id) : route('contacto.store')}}" method="post">
+        <form action="{{isset($contacto) ? route('contactos.update', $contacto->id) : route('contactos.store')}}" method="post">
             @csrf
             @if (isset($contacto))
-                {{method_field('PUT')}}
+            {{method_field('PUT')}}
             @endif
             <label for="">Nombre
                 <input type="text" name="nombre" id="" value="{{isset($contacto) ? $contacto->nombre : ''}}">
@@ -44,6 +44,7 @@
                 </select>
             </label>
             <input type="submit" value="{{isset($contacto) ? 'Actualizar' : 'Agregar'}}">
+            <a href="/contactos/{{$contacto->id}}/view" class="btn">Cancelar</a>
         </form>
     </main>
 </body>

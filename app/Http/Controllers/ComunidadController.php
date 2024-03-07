@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comunidad;
+use App\Models\Cuenta;
 
 class ComunidadController extends Controller
 {
@@ -11,7 +13,8 @@ class ComunidadController extends Controller
      */
     public function index()
     {
-        //
+        $comunidades = Comunidad::with('cuenta')->get();
+        return view('comunidades.index', compact('comunidades'));
     }
 
     /**
@@ -19,7 +22,8 @@ class ComunidadController extends Controller
      */
     public function create()
     {
-        //
+        $cuentas = Cuenta::all();
+        return view('comunidades.create', compact('cuentas'));
     }
 
     /**
@@ -27,7 +31,12 @@ class ComunidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comunidad = new Comunidad();
+        $comunidad->nombre = $request->nombre;
+        $comunidad->administrador_id = $request->administrador_id;
+        $comunidad->descripcion = $request->descripcion;
+        $comunidad->save();
+        return redirect()->action([ComunidadController::class, 'index']);
     }
 
     /**
@@ -35,7 +44,8 @@ class ComunidadController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $comunidad = Comunidad::with('contactos')->find($id);
+        return view('comunidades.view', ['comunidad' => $comunidad]);
     }
 
     /**
@@ -43,7 +53,9 @@ class ComunidadController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $comunidad = Comunidad::find($id);
+        $cuentas = Cuenta::all();
+        return view('comunidades.create', compact('comunidad', 'cuentas'));
     }
 
     /**
@@ -51,7 +63,12 @@ class ComunidadController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $comunidad = Comunidad::find($id);
+        $comunidad->nombre = $request->nombre;
+        $comunidad->administrador_id = $request->administrador_id;
+        $comunidad->descripcion = $request->descripcion;
+        $comunidad->save();
+        return redirect()->action([ComunidadController::class, 'index']);
     }
 
     /**
@@ -59,6 +76,8 @@ class ComunidadController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $comunidad = Comunidad::find($id);
+        $comunidad->delete();
+        return redirect()->action([ComunidadController::class, 'index']);
     }
 }

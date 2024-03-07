@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComunidadController;
 use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactoController;
@@ -38,14 +39,16 @@ Route::get('/chats/{id}/edit', [ChatController::class, 'edit'])->name('chats.edi
 Route::put('/chats/{id}/update', [ChatController::class, 'update'])->name('chats.update');
 Route::get('/chats/{id}/view', [ChatController::class, 'show'])->name('chats.view');
 Route::delete('/chats/{id}/delete', [ChatController::class, 'destroy'])->name('chats.destroy');
+Route::get('/chats/search', [ChatController::class, 'search'])->name('chats.search');
 
 Route::get('/contactos', [ContactoController::class, 'index'])->name('contacto.index');
-Route::get('/contactos/create', [ContactoController::class, 'create'])->name('contacto.create');
+Route::get('/contactos/create', [ContactoController::class, 'create'])->name('contactos.create');
 Route::post('/contactos/store', [ContactoController::class, 'store'])->name('contactos.store');
 Route::get('/contactos/{id}/edit', [ContactoController::class, 'edit'])->name('contactos.edit');
 Route::put('/contactos/{id}/update', [ContactoController::class, 'update'])->name('contactos.update');
 Route::get('/contactos/{id}/view', [ContactoController::class, 'show'])->name('contactos.view');
 Route::delete('/contactos/{id}/delete', [ContactoController::class, 'destroy'])->name('contactos.destroy');
+Route::get('/contactos/search', [ContactoController::class, 'search'])->name('contactos.search');
 
 Route::get('/llamadas', [LlamadaController::class, 'index'])->name('llamada.index');
 Route::get('/llamadas/create', [LlamadaController::class, 'create'])->name('llamada.create');
@@ -62,3 +65,11 @@ Route::get('/grupos/{id}/edit', [GrupoController::class, 'edit'])->name('grupos.
 Route::put('/grupos/{id}/update', [GrupoController::class, 'update'])->name('grupos.update');
 Route::get('/grupos/{id}/view', [GrupoController::class, 'show'])->name('grupos.view');
 Route::delete('/grupos/{id}/delete', [GrupoController::class, 'destroy'])->name('grupos.destroy');
+
+Route::get('/comunidades', [ComunidadController::class, 'index'])->name('comunidade.index');
+Route::get('/comunidades/create', [ComunidadController::class, 'create'])->name('comunidade.create');
+Route::post('/comunidades/store', [ComunidadController::class, 'store'])->name('comunidades.store');
+Route::get('/comunidades/{id}/edit', [ComunidadController::class, 'edit'])->name('comunidades.edit');
+Route::put('/comunidades/{id}/update', [ComunidadController::class, 'update'])->name('comunidades.update');
+Route::get('/comunidades/{id}/view', [ComunidadController::class, 'show'])->name('comunidades.view');
+Route::delete('/comunidades/{id}/delete', [ComunidadController::class, 'destroy'])->name('comunidades.destroy');

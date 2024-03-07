@@ -14,6 +14,10 @@
         <div class="btn_container">
             <a href="chats/create">Nuevo Chat</a>
         </div>
+        <form action="{{ route('chats.search') }}" method="GET">
+            <input class="buscar " type="text" name="search" placeholder="Buscar Chat">
+            <button class="buscar btn_buscar" type="submit">Buscar</button>
+        </form>
         <table>
             <tr>
                 <th>Cuenta</th>
@@ -30,7 +34,7 @@
                     <td>{{$chat->fecha}}</td> --}}
                     <td>
                         <a href="chats/{{$chat->id}}/view">Ver</a>
-                        <a href="chats/{{$chat->id}}/edit">Editar</a>
+                        {{-- <a href="chats/{{$chat->id}}/edit">Editar</a> --}}
                     </td>
                 </tr>
             @endforeach
