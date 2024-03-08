@@ -55,8 +55,11 @@ class LlamadaController extends Controller
      */
     public function edit(string $id)
     {
+        $contactos = Contacto::all();
+        $cuentas = Cuenta::all();
         $llamada = Llamada::find($id);
-        return view('llamadas.create', ['llamada' => $llamada]);
+        /* return view('llamadas.create', ['llamada' => $llamada]); */
+        return view('llamadas.create', compact('llamada', 'cuentas', 'contactos'));
     }
 
     /**

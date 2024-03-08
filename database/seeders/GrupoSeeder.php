@@ -27,14 +27,14 @@ class GrupoSeeder extends Seeder
 
         $grupo3 = new Grupo;
         $grupo3->nombre = "Nuevo proyecto";
-        $grupo3->descripcion = "Pelicula en grabación en espera a estrenarse en 2026";
-        $grupo3->administrador_id = 2;
+        $grupo3->descripcion = "Desarrollo de un sistema web de ventas";
+        $grupo3->administrador_id = 1;
         $grupo3->save();
 
         $grupo4 = new Grupo;
-        $grupo4->nombre = "Familia Asgard";
-        $grupo4->descripcion = "Asgard no es un lugar, es su pueblo.";
-        $grupo4->administrador_id = 3;
+        $grupo4->nombre = "OTB";
+        $grupo4->descripcion = "Comunicacion 24/7";
+        $grupo4->administrador_id = 1;
         $grupo4->save();
     }
 }

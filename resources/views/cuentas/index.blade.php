@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{{asset('whatsapp.ico')}}" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{asset('whatsapp.ico')}}" type="image/png" sizes="16x16">
     <title>WhatsApp</title>
     <script>
         function Eliminar(value){
@@ -35,12 +36,14 @@
             text-align: center;
             width: 400px;
             margin-top: 100px;
+            gap: 40px;
         }
         .container_main {
             display: flex;
             flex-direction: column;
             gap: 20px;
             max-width: 500px;
+            margin-top: 50px;
         }
         .container_foto {
             width: 35%;
@@ -81,14 +84,15 @@
     <section class="container">
         <header class="container_header">
             <figure class="container_img">
-                <img src="{{ asset('images/whatsapp_icon.png') }}" alt="Imagen de Whatsapp" width="100" height="100" class="whatsapp_img">
+                <a href="/chats"><img src="{{asset('images/1004420.jpg')}}" alt="Chats" title="Chats" class="foto"></a>
             </figure>
             <p class="header_parragraph">WhatsApp es una herramienta versátil y conveniente que facilita la comunicación y te ayuda a mantenerte conectado con las personas que te importan.</p>
+            <a class="btn btn_crear" href="cuentas/create">Crear cuenta nueva</a>
         </header>
         <main>
             <section class="container_main">
                 <figure class="container_foto">
-                    <img src="{{asset('images/nick_fury.webp')}}" alt="Nick Fury" title="Nick Fury" class="foto">
+                    <img src="{{asset('images/1004420.jpg')}}" alt="Nick Fury" title="Nick Fury" class="foto">
                 </figure>
                 <table class="container_table">
                     @foreach ($cuentas as $cuenta)
@@ -101,14 +105,14 @@
                     @endforeach
                 </table>
                 <div class="container_btn">
-                    <a class="btn" href="cuentas/{{$cuenta->id}}/view">Ver</a>
-                                <a class="btn" href="cuentas/{{$cuenta->id}}/edit">Editar</a>
-                                <form action="{{route('cuentas.destroy', $cuenta->id)}}" method="POST">
-                                    {{method_field('DELETE')}}
-                                    @csrf
-                                    <input class="btn btn_eliminar" type="submit" value="Eliminar" onclick="return Eliminar('Eliminar cuenta')">
-                                </form>
-                                <a class="btn btn_crear" href="cuentas/create">Crear cuenta nueva</a>
+                    <a class="btn" href="/chats">Ver</a>
+                    {{-- <a class="btn" href="cuentas/{{$cuenta->id}}/view">Ver</a> --}}
+                    <a class="btn" href="cuentas/{{$cuenta->id}}/edit">Editar</a>
+                    <form action="{{route('cuentas.destroy', $cuenta->id)}}" method="POST">
+                    {{method_field('DELETE')}}
+                    @csrf
+                        <input class="btn btn_eliminar" type="submit" value="Eliminar" onclick="return Eliminar('Eliminar cuenta')">
+                    </form>
                 </div>
 
             </section>

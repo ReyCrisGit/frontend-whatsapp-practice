@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('numero_celular');
             $table->string('foto')->nullable();
             $table->string('contrasenia');
-            $table->enum('tipo', ['usuario', 'administrador'])->default('usuario');
             $table->timestamps();
         });
     }

@@ -42,7 +42,7 @@ class ContactoSeeder extends Seeder
         $contacto4->apellido = "Romanoff";
         $contacto4->numero_celular = "71724820";
         $contacto4->pais = "Rusia";
-        $contacto4->cuenta_id = 2;
+        $contacto4->cuenta_id = 1;
         $contacto4->save();
 
         $contacto5 = new Contacto;
@@ -50,7 +50,7 @@ class ContactoSeeder extends Seeder
         $contacto5->apellido = "Danvers";
         $contacto5->numero_celular = "74758181";
         $contacto5->pais = "Estados Unidos";
-        $contacto5->cuenta_id = 2;
+        $contacto5->cuenta_id = 1;
         $contacto5->save();
 
         $contacto6 = new Contacto;
@@ -58,7 +58,7 @@ class ContactoSeeder extends Seeder
         $contacto6->apellido = "Maximoff";
         $contacto6->numero_celular = "73005245";
         $contacto6->pais = "Sokovia";
-        $contacto6->cuenta_id = 2;
+        $contacto6->cuenta_id = 1;
         $contacto6->save();
 
         $contacto7 = new Contacto;
@@ -66,7 +66,7 @@ class ContactoSeeder extends Seeder
         $contacto7->apellido = "Odinson";
         $contacto7->numero_celular = "77001210";
         $contacto7->pais = "Asgard";
-        $contacto7->cuenta_id = 3;
+        $contacto7->cuenta_id = 1;
         $contacto7->save();
 
         $contacto8 = new Contacto;
@@ -74,7 +74,7 @@ class ContactoSeeder extends Seeder
         $contacto8->apellido = "Laufeyson";
         $contacto8->numero_celular = "69652120";
         $contacto8->pais = "Asgard";
-        $contacto8->cuenta_id = 3;
+        $contacto8->cuenta_id = 1;
         $contacto8->save();
 
         $contacto9 = new Contacto;
@@ -82,7 +82,7 @@ class ContactoSeeder extends Seeder
         $contacto9->apellido = "De Xu Wenwu";
         $contacto9->numero_celular = "72214585";
         $contacto9->pais = "Asgard";
-        $contacto9->cuenta_id = 3;
+        $contacto9->cuenta_id = 1;
         $contacto9->save();
 
         $contacto10 = new Contacto;
@@ -90,7 +90,7 @@ class ContactoSeeder extends Seeder
         $contacto10->apellido = "Foster";
         $contacto10->numero_celular = "68651024";
         $contacto10->pais = "Estados Unidos";
-        $contacto10->cuenta_id = 3;
+        $contacto10->cuenta_id = 1;
         $contacto10->save();
     }
 }

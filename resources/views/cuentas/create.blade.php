@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{asset('whatsapp.ico')}}" type="image/png" sizes="16x16">
     <title>WhatsApp</title>
 </head>
 <body>
@@ -35,13 +36,8 @@
             <label for="">Contraseña
                 <input type="password" name="contrasenia" id="" value="{{isset($cuenta) ? $cuenta->contrasenia : ''}}">
             </label>
-            <label for="">Tipo
-                <select name="tipo" id="">
-                    <option value="usuario">Usuario</option>
-                    <option selected="" value="administrador">Administrador</option>
-                </select>
-            </label>
             <input type="submit" value="{{isset($cuenta) ? 'Actualizar' : 'Guardar'}}">
+            <a href="/cuentas">Cancelar</a>
         </form>
     </section>
 </body>

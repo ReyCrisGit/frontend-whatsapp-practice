@@ -33,15 +33,29 @@ class CuentaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'correo' => 'required|string|email|max:255|unique:cuentas', // Validación única
+            'numero_celular' => 'required|string|max:255',
+            'contrasenia' => 'required|string|min:8',
+        ]);
+    
+        // Si la validación falla, se redirecciona con un mensaje
+    
+        if (Cuenta::exists()) {
+            return redirect()->back()->withErrors(['Ya existe una cuenta.']);
+        }
+
         $cuenta = new Cuenta();
         $cuenta->nombre = $request->nombre;
         $cuenta->apellido = $request->apellido;
         $cuenta->correo = $request->correo;
         $cuenta->numero_celular = $request->numero_celular;
-        $cuenta->contrasenia = $request->contrasenia;
-        $cuenta->tipo = $request->tipo;
+        $cuenta->contrasenia = bcrypt($request->contrasenia);
         $cuenta->save();
-        return redirect()->action([CuentaController::class, 'index']);
+        /* return redirect()->action([CuentaController::class, 'index']); */
+        return redirect()->action('cuenta.index');
     }
 
     /**
@@ -73,7 +87,6 @@ class CuentaController extends Controller
         $cuenta->correo = $request->correo;
         $cuenta->numero_celular = $request->numero_celular;
         $cuenta->contrasenia = $request->contrasenia;
-        $cuenta->tipo = $request->tipo;
         $cuenta->save();
         return redirect()->action([CuentaController::class, 'index']);
     }

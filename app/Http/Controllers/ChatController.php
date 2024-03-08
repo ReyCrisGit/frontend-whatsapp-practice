@@ -41,7 +41,7 @@ class ChatController extends Controller
         $chat->cuenta_id = $request->cuenta_id;
         $chat->contacto_id = $request->contacto_id;
         $chat->mensaje = $request->mensaje;
-        $chat->fecha = $request->fecha;
+        /* $chat->fecha = $request->fecha; */
         $chat->save();
         return redirect()->action([ChatController::class, 'index']);
     }
@@ -76,7 +76,7 @@ class ChatController extends Controller
         $chat->cuenta_id = $request->cuenta_id;
         $chat->contacto_id = $request->contacto_id;
         $chat->mensaje = $request->mensaje;
-        $chat->fecha = $request->fecha;
+        /* $chat->fecha = $request->fecha; */
         $chat->save();
         return redirect()->action([ChatController::class, 'index']);
     }
