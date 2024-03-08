@@ -23,6 +23,11 @@
         body {
             background-image: url({{asset('images/fondo_whatsapp.jpg')}})
         }
+        .header_paragraph {
+            background-color: #ECE5DD;
+            padding: 1em;
+            border-radius: 1em;
+        }
         .container {
             display: flex;
             
@@ -35,7 +40,7 @@
             flex-direction: column;
             text-align: center;
             width: 400px;
-            margin-top: 100px;
+            margin-top: 60px;
             gap: 40px;
         }
         .container_main {
@@ -53,6 +58,9 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
+        }
+        .logo {
+            border-radius: 0%;
         }
         .datos {
             display: flex;
@@ -84,9 +92,9 @@
     <section class="container">
         <header class="container_header">
             <figure class="container_img">
-                <a href="/chats"><img src="{{asset('images/1004420.jpg')}}" alt="Chats" title="Chats" class="foto"></a>
+                <a href="/chats"><img src="{{asset('images/whatsapp_icon.png')}}" alt="Chats" title="Chats" class="foto logo"></a>
             </figure>
-            <p class="header_parragraph">WhatsApp es una herramienta versátil y conveniente que facilita la comunicación y te ayuda a mantenerte conectado con las personas que te importan.</p>
+            <p class="header_paragraph">WhatsApp es una herramienta versátil y conveniente que facilita la comunicación y te ayuda a mantenerte conectado con las personas que te importan.</p>
             <a class="btn btn_crear" href="cuentas/create">Crear cuenta nueva</a>
         </header>
         <main>
